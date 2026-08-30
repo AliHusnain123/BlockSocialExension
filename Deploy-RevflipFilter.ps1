@@ -15,10 +15,10 @@ Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
 
 # ---- CONFIG: update this to your actual GitHub repo raw URL ----
-$RepoBase = "https://raw.githubusercontent.com/YOUR-ORG/YOUR-REPO/main"
+$RepoBase = "https://raw.githubusercontent.com/AliHusnain123/BlockSocialExension/main"
 $Files = @(
-    @{ Url = "$RepoBase/files/extension.crx"; Dest = "extension.crx" },
-    @{ Url = "$RepoBase/files/update.xml";    Dest = "update.xml" },
+    @{ Url = "$RepoBase/extension.crx"; Dest = "extension.crx" },
+    @{ Url = "$RepoBase/update.xml";    Dest = "update.xml" },
     @{ Url = "$RepoBase/RevflipNetworkFilter.msi"; Dest = "RevflipNetworkFilter.msi" }
 )
 $InstallDir = "C:\ProgramData\RevflipExt"
