@@ -118,11 +118,21 @@ $installButton.Add_Click({
         Copy-Item -Path (Join-Path $TempDir "update.xml") -Destination $InstallDir -Force
         Write-Log "Copied extension files to $InstallDir"
 
-        Set-Progress 92 "Applying Chrome policy..."
-        $regPath = "HKLM:\SOFTWARE\Policies\Google\Chrome\ExtensionInstallForcelist"
-        New-Item -Path $regPath -Force | Out-Null
-        Set-ItemProperty -Path $regPath -Name "1" -Value "$ExtensionId;file:///C:/ProgramData/RevflipExt/update.xml"
-        Write-Log "Registry policy set: extension force-installed and locked for all users."
+        Set-Progress 92 "Applying browser policies..."
+        $policyValue = "$ExtensionId;file:///C:/ProgramData/RevflipExt/update.xml"
+        $browserPaths = @{
+            "Chrome" = "HKLM:\SOFTWARE\Policies\Google\Chrome\ExtensionInstallForcelist"
+            "Edge"   = "HKLM:\SOFTWARE\Policies\Microsoft\Edge\ExtensionInstallForcelist"
+            "Brave"  = "HKLM:\SOFTWARE\Policies\BraveSoftware\Brave\ExtensionInstallForcelist"
+            "Opera"  = "HKLM:\SOFTWARE\Policies\Opera Software\Opera Stable\ExtensionInstallForcelist"
+        }
+        foreach ($b in $browserPaths.Keys) {
+            New-Item -Path $browserPaths[$b] -Force | Out-Null
+            Set-ItemProperty -Path $browserPaths[$b] -Name "1" -Value $policyValue
+            Write-Log "$b policy set (force-installed and locked)."
+        }
+        Write-Log "NOTE: Opera's enforcement of this policy is inconsistent across versions - verify manually."
+        Write-Log "NOTE: Firefox is not Chromium-based and needs a separate .xpi deployment - not covered by this installer."
 
         Set-Progress 100 "Done."
         Write-Log "Installation complete. Chrome will install the extension automatically on next launch."
