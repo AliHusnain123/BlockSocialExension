@@ -60,7 +60,7 @@ if (Test-Path $NssmExe) {
 }
 
 Write-Host "`n[6/6] Running an initial cleanup pass now..."
-& "$InstallDir\Remove-BlockedBrowsers.ps1"
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$InstallDir\Remove-BlockedBrowsers.ps1"
 
 Write-Host "`n============================================"
 Write-Host " Installation complete."
