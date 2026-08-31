@@ -38,6 +38,19 @@ Write-Host "`n[4/6] Cleaning up any old Scheduled Task from a previous attempt..
 schtasks /Delete /TN "RevflipBrowserCleanup" /F 2>$null | Out-Null
 
 Write-Host "`n[5/6] Downloading NSSM and registering the background service..."
+
+# If a previous install already has the service running, stop it first so the
+# NSSM binary isn't locked in memory (re-running this installer on an already-
+# set-up host would otherwise fail to overwrite nssm.exe with a harmless-but-
+# scary permission error).
+$existingNssm = Get-ChildItem -Path $NssmDir -Filter "nssm.exe" -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
+if ($existingNssm) {
+    & $existingNssm.FullName stop RevflipBrowserGuard 2>$null | Out-Null
+    & $existingNssm.FullName remove RevflipBrowserGuard confirm 2>$null | Out-Null
+    Start-Sleep -Seconds 1
+}
+Remove-Item -Path $NssmDir -Recurse -Force -ErrorAction SilentlyContinue
+
 New-Item -ItemType Directory -Path $NssmDir -Force | Out-Null
 Invoke-WebRequest -Uri "https://nssm.cc/release/nssm-2.24.zip" -OutFile "$InstallDir\nssm.zip" -UseBasicParsing
 Expand-Archive -Path "$InstallDir\nssm.zip" -DestinationPath $NssmDir -Force
