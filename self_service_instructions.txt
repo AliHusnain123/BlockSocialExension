@@ -1,0 +1,26 @@
+HOW TO ADD/REMOVE BLOCKED SITES YOURSELF (no need to ask Claude)
+
+Requirements (one-time setup on your own PC, ~5 minutes):
+1. Install Python from python.org (check "Add to PATH" during install)
+2. Open Command Prompt, run: pip install crx3
+
+Files you need (Claude already gave you these earlier - find them in your
+chat history or your GitHub repo):
+- The `extension` folder containing: manifest.json, background.js, rules.json
+- extension_key.pem (the private signing key - keep this safe, never share it)
+
+To add or remove a site:
+1. Open background.js in Notepad
+2. Find the MANUAL_DOMAINS list, add or remove a line (e.g. "example.com",)
+3. Open manifest.json, bump the "version" number up by one
+   (e.g. "1.0.4" -> "1.0.5")
+4. Open Command Prompt in the folder containing extension_key.pem, run:
+
+   python -c "from crx3 import creator; creator.create_crx_file('extension', 'extension_key.pem', 'extension.crx')"
+
+5. Open update.xml in Notepad, update the version number to match step 3
+6. Upload the new extension.crx and update.xml to your GitHub repo,
+   overwriting the old ones - same as when Claude does it
+
+That's the entire process - it's the exact same 3 commands Claude runs
+every time you ask for a new site to be blocked.
