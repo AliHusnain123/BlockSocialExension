@@ -1,0 +1,5 @@
+# Revflip whitelist - domains here are NEVER blocked, even if they appear in
+# any of the open-source lists or manual-domains.txt. One domain per line.
+# Edit directly on GitHub. Takes effect on next weekly refresh, or immediately
+# via chrome://extensions -> Developer mode -> Update button.
+

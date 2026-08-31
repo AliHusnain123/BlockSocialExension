@@ -1,0 +1,106 @@
+# Revflip manual blocklist - one domain per line, # for comments, blank lines ignored.
+# Edit this file directly on GitHub to add/remove sites. No code changes, no repacking.
+# Changes take effect on the next weekly auto-refresh, or immediately if you force-update
+# via chrome://extensions -> Developer mode -> Update button.
+
+# Professional network (excluded from Hagezi's social list on purpose)
+linkedin.com
+www.linkedin.com
+
+# Streaming (mainstream paid/legit services)
+netflix.com
+www.netflix.com
+primevideo.com
+www.primevideo.com
+disneyplus.com
+www.disneyplus.com
+hulu.com
+www.hulu.com
+hbomax.com
+www.hbomax.com
+max.com
+www.max.com
+twitch.tv
+www.twitch.tv
+peacocktv.com
+www.peacocktv.com
+appletv.com
+tv.apple.com
+
+# Video-sharing platforms (YouTube-alternatives)
+dailymotion.com
+www.dailymotion.com
+vimeo.com
+www.vimeo.com
+rumble.com
+www.rumble.com
+bitchute.com
+www.bitchute.com
+odysee.com
+www.odysee.com
+liveleak.com
+www.liveleak.com
+metacafe.com
+www.metacafe.com
+
+# Gaming
+steampowered.com
+store.steampowered.com
+epicgames.com
+www.epicgames.com
+ea.com
+www.ea.com
+roblox.com
+www.roblox.com
+minecraft.net
+www.minecraft.net
+battle.net
+www.battle.net
+playstation.com
+www.playstation.com
+xbox.com
+www.xbox.com
+
+# Shopping
+amazon.com
+www.amazon.com
+ebay.com
+www.ebay.com
+aliexpress.com
+www.aliexpress.com
+daraz.pk
+www.daraz.pk
+etsy.com
+www.etsy.com
+shein.com
+www.shein.com
+temu.com
+www.temu.com
+
+# Non-approved browser download/update sites
+opera.com
+www.opera.com
+get.opera.com
+download.opera.com
+autoupdate.geo.opera.com
+mozilla.org
+www.mozilla.org
+download.mozilla.org
+download-installer.cdn.mozilla.net
+vivaldi.com
+www.vivaldi.com
+downloads.vivaldi.com
+torproject.org
+www.torproject.org
+dist.torproject.org
+waterfox.net
+www.waterfox.net
+seamonkey-project.org
+www.seamonkey-project.org
+browser.yandex.com
+yandex.com
+maxthon.com
+www.maxthon.com
+ucweb.com
+www.ucweb.com
+download.ucweb.com
